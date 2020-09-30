@@ -158,7 +158,8 @@ int ishm_new_from_buf(void *buf, int buf_len, void *meta, int meta_len) {
 }
 
 void ishm_del(int i) {
-	semctl(i, 0, IPC_RMID, 0);
+	// semctl(i, 0, IPC_RMID, 0);
+	shmctl(i, IPC_RMID, NULL);
 }
 
 int ishm_len(int i) {
